@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
     get 'orders/complete'
-    get 'orders/confirm'
+    post 'orders/confirm'
   end
   # 顧客用
 # URL /customers/sign_in ...
