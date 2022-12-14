@@ -5,7 +5,8 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
+resources :cart_items, only: [:index, :create, :update, :destroy]
+delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
