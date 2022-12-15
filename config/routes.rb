@@ -1,6 +1,6 @@
 
 Rails.application.routes.draw do
-  
+
  namespace :public do
     get 'orders/new'
     get 'orders/index'
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'orders/complete'
     post 'orders/confirm'
   end
-  
+
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -28,7 +28,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   namespace :admin do
     root to: "homes#top"
   end
-  
+
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]

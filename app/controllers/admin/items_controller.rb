@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @itam.update(item_params)
+    if @item.update(item_params)
       flash[:notice] ="Item was successfully update"
       redirect_to admin_item_path(@item)
     else
@@ -42,6 +42,7 @@ class Admin::ItemsController < ApplicationController
  private
 
  def item_params
-   params.require(:item).permit(:image, :name, :introduction, :genre_id ,:is_active)
+   params.require(:item).permit(:image, :name, :introduction, :price, :genre_id ,:is_active)
  end
+
 end

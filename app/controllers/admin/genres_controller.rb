@@ -32,7 +32,7 @@ class Admin::GenresController < ApplicationController
  private
 
   def genre_params
-    params.require(:genre).permit(:name, :is_active)
+    params.require(:genre).permit(:name)
   end
 
 end
