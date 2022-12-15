@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get 'homes/top'
+  end
   namespace :public do
     get 'orders/new'
     get 'orders/index'
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     get 'orders/complete'
     post 'orders/confirm'
   end
+
+
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -39,4 +42,7 @@ namespace :admin do
   resources :genres, only: [:index, :create, :edit, :update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+
 end
