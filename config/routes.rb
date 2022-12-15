@@ -34,7 +34,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 
-
+ namespace :public do
+    root to: "homes#top"
+  end
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -53,6 +55,5 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     resources :customers, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-
+  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 end
