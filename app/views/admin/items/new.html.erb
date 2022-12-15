@@ -1,0 +1,48 @@
+<!-- 商品新規登録ページ WF3ページ目 -->
+
+<div class="container">
+  <div class="row">
+    <h2>商品新規登録</h2>
+    <%= render 'item_erorrs', item: @item %>
+
+    <%= form_with model:@item,url:admin_items_path,local:true do |f| %>
+    <div class="col-xs-3">
+      <%= attachment_image_tag @item, :image, size:'250x250', fallback: 'no_image.jpg',size: "250x250" %>
+      <%= f.attachment_field :image %>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label:商品名, class:"col-xs-2" %>
+        <%= f.text_field :name, size:"56x5" %>
+      </div>
+
+      <div class="form-group">
+        <div class="align-top">
+          <%= f.label:商品説明, class:"col-xs-2"%>
+        </div>
+        <%= f.text_area :introduction, size:"55x5" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label:ジャンル, class:"col-xs-2" %>
+        <%= f.collection_select :genre_id, Genre.all, :id,:name,{prompt: "--選択してください--"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label:税抜価格, class:"col-xs-2" %>
+        ¥ <%= f.text_field :price %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label:販売ステータス, class:"col-xs-3" %>
+        <%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
+      </div>
+
+      <%= f.submit "新規登録", class: "btn btn-primary pull-right" %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-2"></div>
+    </div>
+</div>
