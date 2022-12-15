@@ -1,7 +1,9 @@
+<!-- 商品編集ページ WF5ページ目 -->
+
 <div class="container">
   <div class="row">
     <h2>商品編集</h2>
-    <%= render 'item_errors', product: @item %>
+    <%= render 'item_errors', item: @item %>
 
     <%= form_with model:@item,url:admin_item_path,local:true do |f| %>
     <div class="col-lg-4">

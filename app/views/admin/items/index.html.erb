@@ -1,3 +1,5 @@
+<!-- 商品一覧ページ WF2ページ目 -->
+
 <div class="container">
   <div class="row">
     <h3>商品一覧</h3>
@@ -5,7 +7,7 @@
     <div class="col-xs-9">
       <div class="text-right">
         <%= link_to new_admin_item_path do %>
-        <button type="button" class="btn-outline-dark btn-circle btn-lg">＋</button>
+        <button type="button" class="btn-outline-white btn-circle btn-md">＋</button>
         <% end %>
       </div>
 
@@ -21,7 +23,7 @@
         </thead>
 
         <tbody>
-          <% @item.each do |item| %>
+          <% @items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name,admin_item_path(item) %></td>
