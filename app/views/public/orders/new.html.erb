@@ -1,2 +1,41 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h4>注文情報入力</h4>
+<%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
+
+  <h5>支払い方法</h5>
+    <p>
+      <%= f.radio_button :クレジットカード,checked: "checked" %>  
+      <%= f.label :payment_method, "クレジットカード" %><br>
+      <%= f.radio_button :銀行振込 %>  
+      <%= f.label :payment_method, "銀行振込" %>
+    </p>
+  <h5>お届け先</h5>
+   
+    <%= f.radio_button :address_option, 0, checked: "checked" %>
+      <%= f.label :ご自身の住所 %><br>
+     〒<%= current_member.post_code %>
+        <%= current_member.address %><br>
+        <%= current_member.last_name %><%= current_member.first_name %><br>
+        
+    <%= f.radio_button :address_option, 1 %>
+      <%= f.label :登録済住所から選択 %><br>
+      <%= f.collection_select :customer_id, @addresses, :id, :full_adresses %>
+      
+    <%= f.radio_button :address_option, 2 %>
+    <%= f.label :order_address, "新しいお届け先" %> 
+     　<table> 
+         <tr>
+           <td><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
+           <td><%= f.text_field :post_code　%></td>
+        </tr>
+        <tr>
+           <td><%= f.label :address, "住所" %></td>
+           <td><%= f.text_field :address %></td>
+        </tr>
+         <tr>
+           <td><%= f.label :name, "宛名" %></td> 
+           <td><%= f.text_field :name %></td>
+         </tr>
+     </table>
+   <%= f.submit "確認画面へ進む" %>
+      
+<%end%>
