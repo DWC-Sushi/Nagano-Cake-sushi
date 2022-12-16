@@ -3,10 +3,10 @@
 
   <h5>支払い方法</h5>
     <p>
-      <%= f.radio_button :クレジットカード,checked: "checked" %>  
-      <%= f.label :payment_method, "クレジットカード" %><br>
-      <%= f.radio_button :銀行振込 %>  
-      <%= f.label :payment_method, "銀行振込" %>
+      <%= f.radio_button :payment_method, "credit_card" ,checked: "checked" %>  
+      <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
+      <%= f.radio_button :payment_method,"transfer"  %>  
+      <%= f.label :payment_method_transfer, "銀行振込" %>
     </p>
   <h5>お届け先</h5>
    
@@ -37,5 +37,4 @@
          </tr>
      </table>
    <%= f.submit "確認画面へ進む" %>
-      
 <%end%>

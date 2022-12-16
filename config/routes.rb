@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     post 'orders/confirm'
   end
 
+  namespace :public do
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   # 顧客用
 
 # URL /customers/sign_in ...
@@ -16,8 +22,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+
 
 
 # 管理者用
