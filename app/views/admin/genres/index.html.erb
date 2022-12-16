@@ -2,28 +2,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col">
       <h3 class="genre-head">ジャンル一覧・追加</h3>
-
       <%= render 'genre_errors', genre: @genre %>
-      <%= form_with model: @genre, url: admin_genres_path do |f| %>
-      <div>
-        <%= f.label :ジャンル名 %>
-        <%= f.text_field :name %>
-        <%= f.submit "新規登録", class: "btn btn-primary genre_btn" %>
-      </div>
-      <% end %>
+    </div>
+  </div>
 
-      <table class='table genre-table'>
-        <thead>
-          <tr>
-            <th class="active col-xs-6">ジャンル</th>
-            <th class="active col-xs-2"></th>
-            <th class="active col-xs-3"></th>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :ジャンル名 %></th>
+            <th><%= f.text_field :name, placeholder:"ジャンル名" %></th>
+            <th><%= f.submit "新規登録", class: "btn btn-success" %></th>
+          </div>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+　<div class="row">
+　  <div class="col">
+　    <table class='table'>
+　      <thead class="thead-light">
+　        <tr>
+            <th>ジャンル</th>
+            <th colspan="1"></th>
           </tr>
         </thead>
-        <tbody class="genre_area">
-        <%= render 'genre_index', genres: @genres %>
+        <tbody>
+          <%= render 'genre_index', genres: @genres %>
         </tbody>
       </table>
     </div>
