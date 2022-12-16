@@ -1,2 +1,69 @@
-<h1>Admin::OrderDetails#update</h1>
-<p>Find me in app/views/admin/order_details/update.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  
+  <div class='row'>
+    <h4>注文履歴詳細</h4>
+    <table class='table'>
+      <tbody>
+        <tr>
+          <th>購入者</th>
+          <th><%= link_to @customer.last_name, admin_customer_path %>  <%= @customer.first_name %></th>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <th><%= l @order.created_at, format: :short %></th>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <th><%= @order.postal_code %>  <%= @order.address %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= @order.name %></th>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <th><%= @order.payment_method %></th>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <th><%= @order.status %>  <%= link_to "更新", class: 'btn btn-info' %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='row'>
+    <div class='col-8'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th><%= link_to "更新", class: 'btn btn-info' %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.名前？ %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.小計？ %></td>
+            <td><%= order_detail.making_status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-4'>
+      <ul>
+        <li>商品合計</li>
+        <li>送料</li>
+        <li>請求金額合計</li>
+      </ul>
+  </div>
+</div>
