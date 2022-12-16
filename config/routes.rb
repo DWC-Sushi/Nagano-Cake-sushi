@@ -1,5 +1,8 @@
 
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+  end
   namespace :admin do
     get 'order_details/update'
   end
@@ -24,6 +27,12 @@ Rails.application.routes.draw do
     post 'orders/confirm'
   end
 
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/unsubscribe'
+    get 'customers/withdraw'
+  end
+
   # 顧客用
 
 # URL /customers/sign_in ...
@@ -34,9 +43,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
 
- namespace :public do
-    root to: "homes#top"
-  end
+
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords], controllers: {
