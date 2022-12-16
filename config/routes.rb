@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+<<<<<<< HEAD
   namespace :public do
     get 'homes/top'
   end
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
   namespace :public do
+=======
+
+ namespace :public do
+>>>>>>> origin/develop
     get 'orders/new'
     get 'orders/index'
     get 'orders/show'

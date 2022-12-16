@@ -3,12 +3,21 @@
 <div class="container">
   <div class="row">
     <h2>商品編集</h2>
-    <%= render 'item_errors', item: @item %>
+    <%= render 'item_error', item: @item %>
 
     <%= form_with model:@item,url:admin_item_path,local:true do |f| %>
     <div class="col-lg-4">
-      <%= attachment_image_tag @item, :image, size:'250x250', fallback: 'no_image.jpg',size: "250x250" %>
-      <%= f.attachment_field :image %>
+      <%= f.label:商品画像, class:"col-xs-2" %>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size:"250x250" %>
+      <% else %>
+        <%= image_tag 'no_image', size:"250x250" %>
+      <% end %>
+      <%= f.file_field :image, accept:"image/*" %>
+
+      <!-- refileの記述 -->
+      <!-- %= attachment_image_tag @item, :image, size:'250x250', fallback: 'no_image.jpg',size: "250x250" %
+           %= f.attachment_field :image % -->
     </div>
 
     <div class="col-lg-6">
