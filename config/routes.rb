@@ -11,7 +11,7 @@ scope module: :public do
   root to: "homes#top"
   get "/about" => "homes#about"
   resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update]
+  resource :customers, only: [:show, :edit, :update]
   get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
   resources :cart_items, only: [:index, :update, :destroy, :create]
