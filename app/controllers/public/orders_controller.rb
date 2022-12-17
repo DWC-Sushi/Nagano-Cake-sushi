@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!
+  # before_action :authenticate_customer!
   
   
   def new # 注文情報入力画面
@@ -12,20 +12,20 @@ class Public::OrdersController < ApplicationController
 
     #  [:address_option]=="0"のデータ(memberの住所)を呼び出す
     if params[:order][:address_option] == "0"
-    @order.post_code = current_customer.post_code
+    @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
     @order.name = current_customer.last_name + current_customer.first_name 
     # [:address_option]=="1"を呼び出す
     elsif params[:order][:address_option] == "1"
     ship = Address.find(params[:order][:customer_id])
 　　#orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
-    @order.post_code = ship.post_code
+    @order.postal_code = ship.postal_code
     @order.address = ship.address
     @order.name = ship.name 
       
     # 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
     elsif params[:order][:address_option] = "2"
-    @order.post_code = params[:order][:post_code]
+    @order.postal_code = params[:order][:postal_code]
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
     else
@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_custmer.orders
+    @orders = current_customer.orders
   end
 
   def show
@@ -50,7 +50,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_custmer.id
+    @order.customer_id = current_customer.id
     @order.save
     
     # ordered_itmemの保存
@@ -69,6 +69,6 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:postage, :payment_method, :name, :address, :post_code ,:customer_id, :total_payment, :status)
+    params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id, :total_payment, :status)
   end
 end
