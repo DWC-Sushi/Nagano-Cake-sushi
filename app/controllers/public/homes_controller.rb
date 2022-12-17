@@ -1,5 +1,4 @@
 class Public::HomesController < ApplicationController
-
   def top
     # admin/genreから持ってくる
     @genres = Genre.all
