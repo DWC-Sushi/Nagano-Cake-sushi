@@ -3,7 +3,7 @@
 	<div class="col-xs-offset-1 col-xs-12">
 		<h2 class="head-line text-center title_h2">マイページ</h2>
 		<strong>登録情報</strong>
-			<%= link_to " 編集する", edit_public_customer_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+			<%= link_to " 編集する", edit_customers_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
 			</p>
 
 			<table class="table table-bordered table-condensed" >
@@ -38,7 +38,7 @@
 					<%= link_to " 一覧を見る", addresses_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
 				</p>
 				<p><strong class="order-link">注文履歴</strong>
-					<%= link_to " 一覧を見る", public_orders_index_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+					<%= link_to " 一覧を見る", orders_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
 				</p>
 			</div>
 	</div>
