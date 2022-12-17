@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
   validates :is_active, inclusion: {in: [true, false]}
-  
+
   # 消費税
   def taxin_price
     price*1.1
