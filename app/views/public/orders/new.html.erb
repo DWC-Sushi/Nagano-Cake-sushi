@@ -3,36 +3,36 @@
 
   <h5>支払い方法</h5>
     <p>
-      <%= f.radio_button :payment_method, "credit_card" ,checked: "checked" %>  
+      <%= f.radio_button :payment_method, "credit_card" ,checked: "checked" %>
       <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
-      <%= f.radio_button :payment_method,"transfer"  %>  
+      <%= f.radio_button :payment_method,"transfer"  %>
       <%= f.label :payment_method_transfer, "銀行振込" %>
     </p>
   <h5>お届け先</h5>
-   
+
     <%= f.radio_button :address_option, 0, checked: "checked" %>
       <%= f.label :ご自身の住所 %><br>
-     〒<%= current_member.post_code %>
-        <%= current_member.address %><br>
-        <%= current_member.last_name %><%= current_member.first_name %><br>
-        
+     〒<%= current_customer.postal_code %>
+        <%= current_customer.address %><br>
+        <%= current_customer.last_name %><%= current_customer.first_name %><br>
+
     <%= f.radio_button :address_option, 1 %>
       <%= f.label :登録済住所から選択 %><br>
       <%= f.collection_select :customer_id, @addresses, :id, :full_adresses %>
-      
+
     <%= f.radio_button :address_option, 2 %>
-    <%= f.label :order_address, "新しいお届け先" %> 
-     　<table> 
+    <%= f.label :order_address, "新しいお届け先" %>
+     　<table>
          <tr>
-           <td><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
-           <td><%= f.text_field :post_code　%></td>
+           <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+           <td><%= f.text_field :postal_code　%></td>
         </tr>
         <tr>
            <td><%= f.label :address, "住所" %></td>
            <td><%= f.text_field :address %></td>
         </tr>
          <tr>
-           <td><%= f.label :name, "宛名" %></td> 
+           <td><%= f.label :name, "宛名" %></td>
            <td><%= f.text_field :name %></td>
          </tr>
      </table>
