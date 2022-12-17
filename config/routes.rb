@@ -25,9 +25,17 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+
     resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe'=>'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
+
+
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+    collection do
+      delete 'destroy_all'
+    end
   end
 
   # 顧客用
@@ -37,8 +45,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+
 
  namespace :public do
     root to: "homes#top"

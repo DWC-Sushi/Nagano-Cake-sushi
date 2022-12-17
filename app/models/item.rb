@@ -25,6 +25,6 @@ class Item < ApplicationRecord
   
   # 消費税
   def taxin_price
-    price*1.08
+    price*1.1
   end
 end
