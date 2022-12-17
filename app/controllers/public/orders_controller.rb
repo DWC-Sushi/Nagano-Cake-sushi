@@ -1,74 +1,81 @@
 class Public::OrdersController < ApplicationController
   # before_action :authenticate_customer!
   
-  
-  def new # 注文情報入力画面
+  # 注文情報入力
+  def new
     @order = Order.new
-    @addresses = current_customer.addresses.all
+    # @addresses = current_customer.addresses.all
   end
   
-  def confirm   # 注文情報入力確認画面
-    @order = Order.new(order_params)
-
-    #  [:address_option]=="0"のデータ(memberの住所)を呼び出す
-    if params[:order][:address_option] == "0"
-    @order.postal_code = current_customer.postal_code
-    @order.address = current_customer.address
-    @order.name = current_customer.last_name + current_customer.first_name 
-    # [:address_option]=="1"を呼び出す
-    elsif params[:order][:address_option] == "1"
-    ship = Address.find(params[:order][:customer_id])
-　　#orderのmember_id(=カラム)でアドレス(帳)を選び、そのデータ送る
-    @order.postal_code = ship.postal_code
-    @order.address = ship.address
-    @order.name = ship.name 
-      
-    # 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
-    elsif params[:order][:address_option] = "2"
-    @order.postal_code = params[:order][:postal_code]
-    @order.address = params[:order][:address]
-    @order.name = params[:order][:name]
-    else
-      render 'new'
-    end
-    
+  # 注文情報確認
+  def confirm
     @cart_items = current_customer.cart_items.all
-    @order.customer_id = current_custmer.id
-  end
+    @order = Order.new(order_params)
+    @order.payment_method = params[:order][:payment_method]
+    @order.shipping_cost = 800
 
+    if params[:order][:select_address] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+      render :confirm
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:select_address] == "2"
+      @order.postal_code = @order.postal_code
+      @order.address = @order.address
+      @order.name = @order.name
+    else
+      render :new
+    end
+  end
+  
+  # 注文履歴一覧
   def index
-    @orders = current_customer.orders
+    # (create_at: :desc)で降順(大から表示）、(create_at: :asc)で昇順（小から表示）
+    @orders = current_customer.orders.order(create_at: :desc)
   end
-
+  # 注文履歴詳細
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @order.shipping_cost = 800
   end
-
+  # 注文完了
   def complete
   end
-
+  # 注文確定処理
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    
-    # ordered_itmemの保存
-    current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-      @order_details = OrderDetail.new #初期化宣言
-      @order_details.item_id = cart_item.item_id #商品idを注文商品idに代入
-      @order_details.amonut = cart_item.amount #商品の個数を注文商品の個数に代入
-      @order_details.tax_included_price = (cart_item.item.price*1.08).floor #消費税込みに計算して代入
-      @order_details.order_id =  @order.id #注文商品に注文idを紐付け
-      @order_details.save #注文商品を保存
-    end #ループ終わり
-
-    current_customer.cart_items.destroy_all #カートの中身を削除
-    redirect_to complete_orders_path
+    if @order.save
+      @cart_items = current_customer.cart_items
+      ###カート破棄前に注文詳細へ保存する記述###
+      @cart_items.each do |cart_item| 
+        order_detail = OrderDetail.new(order_id: @order.id)
+        order_detail.item_id = cart_item.item_id
+        order_detail.price = cart_item.item.price * 1.1
+        order_detail.amount = cart_item.amount
+        order_detail.making_status = 0
+        order_detail.save
+      end
+      ##########ここまで##########
+      @cart_items.destroy_all
+      redirect_to orders_complete_path
+    else
+      render :new
+    end
   end
   
   private
   def order_params
     params.require(:order).permit(:shipping_cost, :payment_method, :name, :address, :postal_code ,:customer_id, :total_payment, :status)
+  end
+  
+  def address_params
+    params.require(:order).permit(:postal_code, :address, :name)
   end
 end
