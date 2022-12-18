@@ -1,0 +1,38 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>genre</h2>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <%= attachment_image_tag(@item, :image, size: "340x220", fallback: "no_image.jpg" ) %>
+    </div>
+
+    <div class="col-xs-6 item-show">
+      <div class="item-description">
+        <div class="field item-name">
+          <h2><%= @item.name %></h2>
+        </div>
+        <div class="field">
+          <%= @item.introduction %>
+        </div>
+        <div class="field item-price">
+          <h3>¥ <%= tax_price(@item.price).to_s(:delimited) %>
+              <span class="tax">(税込)</span>
+          </h3>
+        </div>
+      </div>
+
+      <div class="field">
+        <% if @item.is_active == true %>
+          <%= form_with(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.submit "カートに入れる", class: "glyphicon glyphicon-shopping-cart btn btn-primary" %>
+        <% else %>
+          <h3>売り切れ中</h3>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+ </div>
+</div>
