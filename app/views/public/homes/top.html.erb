@@ -21,8 +21,8 @@
       <div class="recommend-container">
         <% @random.each do |item| %>
           <div class="recommend-item">
-            <%= link_to item_path(item) %>
-            <%= image_tag @item.image, size:"180x130" %><br>
+            <%= link_to item.name,item_path(item) %>
+            <%= image_tag item.image, size:"180x130" %><br>
             <p><%= item.name %></p>
             <p>¥<%= (item.price*1.1).floor.to_s(:delimited)%>(税込)</p>
           </div>
