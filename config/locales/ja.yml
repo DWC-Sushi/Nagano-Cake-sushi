@@ -2,7 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-
+      short: "%Y/%m/%d"
   # 日本語に変換
   enums:
     order:
