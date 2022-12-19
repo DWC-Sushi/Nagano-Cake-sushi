@@ -10,16 +10,16 @@
 
         <% if customer_signed_in? %>
           <li>
-
+            <%= link_to "マイページ", customers_my_page_path, class: 'nav-link text-light' %>
           </li>
           <li>
-
+　　　　　　<%= link_to "商品一覧", items_path, class: 'nav-link text-light' %>
           </li>
           <li>
-
+            <%= link_to "カート", cart_items_path, class: 'nav-link text-light' %>
           </li>
           <li>
-
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
           </li>
 
         <% elsif admin_signed_in? %>
@@ -41,8 +41,10 @@
 
         <% else %>
           <li>
-          </li>
+            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+          </li> 
           <li>
+            <%= link_to "商品一覧", items_path, class: 'nav-link text-light' %>
           </li>
           <li>
             <%= link_to "Sign up", new_customer_registration_path, class: 'nav-link text-light' %>
