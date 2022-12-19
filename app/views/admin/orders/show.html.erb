@@ -54,9 +54,9 @@
           <% @order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.item.taxin_price %></td>
+            <td><%= (order_detail.item.taxin_price).floor.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.item.taxin_price * order_detail.amount %></td>
+            <td><%= (order_detail.item.taxin_price * order_detail.amount).floor.to_s(:delimited) %></td>
             <td>
               <%= form_with model: order_detail , url: admin_order_detail_path(order_detail.id) , method: :patch , local: true do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
@@ -71,9 +71,9 @@
       <ul>
         <% @sum = 0 %>
         <% @sum += order_detail.item.taxin_price * order_detail.amount %>
-        <li>商品合計  <%= @sum %>円</li>
+        <li>商品合計  <%= @sum.floor.to_s(:delimited) %>円</li>
         <li>送料  800円</li>
-        <li>請求金額合計  <%= @sum + 800 %>円</li>
+        <li>請求金額合計  <%= (@sum + 800).floor.to_s(:delimited) %>円</li>
       </ul>
       <% end %>
     </div>
