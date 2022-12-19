@@ -9,10 +9,10 @@
 			(全<%= @items.total_count %>件中　<%= @items.count %>件)
 		</span>
 		</h2>
-			<div class="justify-content">
+        <div class="col-sm-2 justify-content">
 				<% @items.each do |item| %>
           <%= link_to item.name,item_path(item) , class: "btn-link" %>
-        <div id="img_field" class="item">
+        <div class="img_field">
           <%= image_tag item.get_image, size:"180x130"%>
         </div>
           <p class="item-name">
