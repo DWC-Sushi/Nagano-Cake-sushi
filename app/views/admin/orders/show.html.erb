@@ -6,7 +6,7 @@
       <tbody>
         <tr>
           <th>購入者</th>
-          <th><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path %></th>
+          <th><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer) %></th>
         </tr>
         <tr>
           <th>注文日</th>
