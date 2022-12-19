@@ -41,15 +41,15 @@
             <tr class="form-group">
               <th><%= f.label :会員ステータス %></th>
               <th>
-                <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "有効" %>
-                <%= f.radio_button :is_deleted, false, checked: false %><%= f.label :is_deleted, "退会" %>
+                <%= f.radio_button :is_deleted, false, checked: true %><%= f.label :is_deleted, "有効" %>
+                <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会" %>
               </th>
             </tr>
             <tr class="form-group">
               <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
             </tr>
-          </tbody>
+            <% end %>
+          </tbody>  
         </table>
-    <% end %>
   </div>
 </div>
