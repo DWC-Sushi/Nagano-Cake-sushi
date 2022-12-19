@@ -6,7 +6,7 @@
       <tbody>
         <tr>
           <th>購入者</th>
-          <th><%= link_to @customer.last_name, admin_customer_path %>  <%= @customer.first_name %></th>
+          <th><%= link_to @customer.last_name+@customer.first_name, admin_customer_path %></th>
         </tr>
         <tr>
           <th>注文日</th>
@@ -22,11 +22,20 @@
         </tr>
         <tr>
           <th>支払い方法</th>
-          <th><%= @order.payment_method %></th>
+          <th><%= @order.payment_method_i18n %></th>
         </tr>
         <tr>
           <th>注文ステータス</th>
-          <th><%= @order.status %>  <%= link_to "更新", class: 'btn btn-info' %></th>
+          <th>
+          <% if @order.status == 1 %>
+            <%= form.select :making_status == 1, class: "production_status-select" %>
+          <% else %>
+            <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+              <%= f.select :status, Order.statuses_i18n.invert.keys, class: "status" %>
+              <%= f.submit "更新" , class: 'btn btn-info' %>
+            <% end %>
+          <% end %>
+          </th
         </tr>
       </tbody>
     </table>
@@ -49,11 +58,16 @@
         <tbody>
           <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= order_detail.名前？ %></td>
-            <td><%= order_detail.price %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.小計？ %></td>
-            <td><%= order_detail.making_status %></td>
+            <td><%= order_detail.item.add_tax_price * order_detail.amount %></td>
+            <td>
+              <%= form_with model: order_detail , url: admin_order_details_path(order_detail.id) , method: :patch , local: true do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
@@ -61,9 +75,12 @@
     </div>
     <div class='col-4'>
       <ul>
-        <li>商品合計</li>
-        <li>送料</li>
-        <li>請求金額合計</li>
+        <% @sum = 0 %>
+        <% @sum += order_detail.item.with_tax_price %>
+        <li>商品合計  <%= @sum %>円</li>
+        <li>送料  800円</li>
+        <li>請求金額合計  <%= @sum + 800 %>円</li>
       </ul>
+    </div>
   </div>
 </div>
