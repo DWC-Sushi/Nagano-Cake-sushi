@@ -6,7 +6,7 @@ ja:
   # 日本語に変換
   enums:
     order:
-      order_status:
+      status:
         wait_payment: '入金待ち'
         confirm_payment: '入金確認'
         making: '製作中'
@@ -16,7 +16,7 @@ ja:
         credit_card: "クレジットカード"
         transfer: '銀行振込'
     order_detail:
-      manufacture_status:
+      making_status:
         impossible_manufacture: '着手不可'
         waiting_manufacture: '製作待ち'
         manufacturing: '製作中'
