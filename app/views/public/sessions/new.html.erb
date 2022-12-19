@@ -1,8 +1,9 @@
+<div class = "container">
 <div class="row">
   <div class="col-xs-offset-1 col-xs-11">
     <h3 class="head-line title_h2 text-center">会員の方はこちらからログイン</h3>
 
-    <%= form_for(resource, as: resource_name, url: customers_path(resource_name)) do |f| %>
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
 
       <div class="field form-group col-xs-9">
          <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>

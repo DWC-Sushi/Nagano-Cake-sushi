@@ -1,14 +1,13 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>genre</h2>
+      <%= render 'admin/genres/genre_sidebar', genres: @genres  %>
     </div>
     <div class='col-md-8 offset-md-1'>
+      <div class='d-flex text-align'>
       <%= image_tag @item.get_image, size:"200x200"%>
-    </div>
 
-    <div class="col-xs-6 item-show">
-      <div class="item-description">
+      <div class="item">
         <div class="field item-name">
           <h2><%= @item.name %></h2>
         </div>
@@ -16,10 +15,11 @@
           <%= @item.introduction %>
         </div>
         <div class="field item-price">
-          <h3>¥ <%= (@item.price*1.1).floor.to_s(:delimited) %> %>
+          <h3>¥ <%= (@item.price*1.1).floor.to_s(:delimited) %>
               <span class="tax">(税込)</span>
           </h3>
         </div>
+      </div>
       </div>
 
       <div class="field">
@@ -33,7 +33,7 @@
               <h3>売り切れ中</h3>
             <% end %>
           <% end %>
-      </div>
+
     </div>
  </div>
 </div>
