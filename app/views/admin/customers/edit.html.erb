@@ -18,31 +18,31 @@
             <tr>
               <th><%= f.label :フリガナ %></th>
               <th>
-                <%= f.text_field :last_name_kana, class: "form-control name" %>    
+                <%= f.text_field :last_name_kana, class: "form-control name" %>
                 <%= f.text_field :first_name_kana, class: "form-control name" %>
               </th>
             </tr>
             <tr>
               <th><%= f.label :郵便番号 %></th>
-              <th><%= f.text_field :postal_code, class: "form-control postal_code" %></th>   
+              <th><%= f.text_field :postal_code, class: "form-control postal_code" %></th>
             </tr>
             <tr class="form-group">
               <th><%= f.label :住所 %></th>
-              <th><%= f.text_field :address, class: "form-control address" %></th>   
+              <th><%= f.text_field :address, class: "form-control address" %></th>
             </tr>
             <tr class="form-group">
               <th><%= f.label :電話番号 %></th>
-              <th><%= f.text_field :telephone_number, class: "form-control telephone_number" %></th>   
+              <th><%= f.text_field :telephone_number, class: "form-control telephone_number" %></th>
             </tr>
             <tr class="form-group">
               <th><%= f.label :メールアドレス %></th>
-              <th><%= f.text_field :email, class: "form-control email" %></th>   
+              <th><%= f.text_field :email, class: "form-control email" %></th>
             </tr>
             <tr class="form-group">
               <th><%= f.label :会員ステータス %></th>
               <th>
-                <%= f.radio_button :is_deleted, true, checked: true %><%= f.label :is_deleted, "有効" %>
-                <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "退会" %>
+                <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "有効" %>
+                <%= f.radio_button :is_deleted, false, checked: false %><%= f.label :is_deleted, "退会" %>
               </th>
             </tr>
             <tr class="form-group">
