@@ -3,7 +3,8 @@ class Public::AddressesController < ApplicationController
 
   def index
     @addresses = current_customer.addresses
-    @address = Address.new
+    @address_new = Address.new
+    @address = Address
   end
 
   def edit
@@ -16,7 +17,7 @@ class Public::AddressesController < ApplicationController
     @address.customer_id= current_customer.id
     @addresses = current_customer.addresses
     if @address.save
-      redirect_to addresses_path(@address),
+      redirect_to addresses_path
       flash.now[:notice] = "新規配送先を登録しました"
     else
       render :index

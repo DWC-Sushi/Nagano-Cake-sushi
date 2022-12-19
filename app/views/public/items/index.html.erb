@@ -11,16 +11,18 @@
 		</h2>
 			<div class="clearfix item-box">
 				<% @items.each do |item| %>
-          <%= link_to item_path(item.id), class: "btn-link" %>
+          <%= link_to item.name,item_path(item) , class: "btn-link" %>
         <div id="img_field" class="item">
-          <%= attachment_image_tag(item, :image, size: "180x130", fallback: "no_image.jpg") %>
+          <%= image_tag item.get_image, size:"180x130"%>
+          <%#= attachment_image_tag(item, :image, size: "180x130", fallback: "no_image.jpg") %>
+
         </div>
           <p class="item-name">
             <%= item.name %>
           </p>
-       <% if item.is_active == true %>
-      <p>¥<%= @item.price.to_s(:delimited) %></p>
-    <% elsif @item.is_active == false %>
+         <% if item.is_active == true %>
+      <p>¥<%= item.price.to_s(:delimited) %></p>
+        <% elsif item.is_active == false %>
       <p class="soldout">売り切れ中</p>
     <% end %>
     <% end %>
