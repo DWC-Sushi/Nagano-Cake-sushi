@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method]
     @order.shipping_cost = 800
-
+    # 会員の住所の表示
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
