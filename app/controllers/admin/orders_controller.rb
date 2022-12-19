@@ -15,12 +15,6 @@ class Admin::OrdersController < ApplicationController
      end
   end
 
-
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to request.referer
-  end
-  
   private
 
   def order_params
