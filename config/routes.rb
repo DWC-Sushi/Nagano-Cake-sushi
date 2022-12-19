@@ -19,11 +19,11 @@ scope module: :public do
   patch "customers/information" => "customers#update"
   get "/customers/unsubscribe" => "customers#unsubscribe"
   patch "/customers/withdraw" => "customers#withdraw"
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all_cart_items"
   resources :cart_items, only: [:index, :update, :destroy, :create]
-  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
-  resources :orders, only: [:new, :create, :show, :index]
   post "/orders/confirm" => "orders#confirm"
   get "/orders/complete" => "orders#complete"
+  resources :orders, only: [:new, :create, :show, :index]
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 end
