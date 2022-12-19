@@ -1,33 +1,32 @@
  <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>genre</h2>
+      <%= render 'admin/genres/genre_sidebar', genres: @genres  %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8'>
       <h2 class="product-headline head-line title_h2 text-center">商品一覧
 		<span>
 			(全<%= @items.total_count %>件中　<%= @items.count %>件)
 		</span>
 		</h2>
-			<div class="clearfix item-box">
+        <div class="col-sm-2 justify-content">
 				<% @items.each do |item| %>
           <%= link_to item.name,item_path(item) , class: "btn-link" %>
-        <div id="img_field" class="item">
+        <div class="img_field">
           <%= image_tag item.get_image, size:"180x130"%>
-          
-
         </div>
           <p class="item-name">
             <%= item.name %>
           </p>
          <% if item.is_active == true %>
-      <p>¥<%= item.price.to_s(:delimited) %></p>
-        <% elsif item.is_active == false %>
-      <p class="soldout">売り切れ中</p>
-    <% end %>
-    <% end %>
+            <p>¥<%= item.price.to_s(:delimited) %></p>
+         <% else %>
+            <p class="soldout">売り切れ中</p>
+         <% end %>
+        <% end %>
 
-  </div>
+      </div>
+   <%= paginate @items %>
   </div>
 
   </div>
