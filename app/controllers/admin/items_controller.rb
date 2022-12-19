@@ -1,7 +1,6 @@
 class Admin::ItemsController < ApplicationController
 
-  # ログイン済管理者のみにアクセスを許可する
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
 
   def index
     @items = Item.all.page(params[:page]).per(10)
