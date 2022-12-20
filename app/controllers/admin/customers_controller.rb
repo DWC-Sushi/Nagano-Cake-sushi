@@ -16,12 +16,9 @@ before_action :authenticate_admin!
 
   def update
     @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
+    @customer.update(customer_params)
       flash[:notice] = "You have updated customer successfully."
       redirect_to admin_customer_path(@customer)
-    else
-      render :edit
-    end
   end
 
   private
