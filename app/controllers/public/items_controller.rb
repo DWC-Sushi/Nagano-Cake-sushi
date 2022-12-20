@@ -13,10 +13,10 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @genres = Genre.all
-    if params[:genre_id].present?
+     if params[:genre_id].present?
        @genre = Genre.find(params[:genre_id])
        @items = @genre.items.where(is_active: true).page(params[:page]).per(8)
-     end
+    end
   end
 
   def item_params
