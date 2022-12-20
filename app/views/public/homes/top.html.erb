@@ -21,8 +21,12 @@
       <div class="row">
         <% @random.each do |item| %>
           <div class="col-md-3">
-            <%= link_to item.name,item_path(item) %>
-            <%= image_tag item.image, size:"180x130" %><br>
+            <%= item.name  %>
+            <div class="img_field">
+            <%= link_to item_path(item) do %>
+            <%= image_tag item.image, size:"180x130" %>
+            <% end %>
+            </div>
             <p><%= item.name %></p>
             <p>¥<%= (item.price*1.1).floor.to_s(:delimited)%>(税込)</p>
           </div>
