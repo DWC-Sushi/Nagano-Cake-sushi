@@ -16,7 +16,13 @@ class Public::ItemsController < ApplicationController
      if params[:genre_id].present?
        @genre = Genre.find(params[:genre_id])
        @items = @genre.items.where(is_active: true).page(params[:page]).per(8)
-    end
+     end
+  end
+
+  def search
+    @items = Item.page(params[:page]).per(10)
+    @word_for_search = Genre.find(params[:word_for_search])
+    @search_items = Item.where(genre: params[:word_for_search])
   end
 
   def item_params
