@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <th><%= @order.postal_code %>  <%= @order.address %></br><%= @order.name %></th>
+          <th>〒<%= @order.postal_code %>  <%= @order.address %></br><%= @order.name %></th>
         </tr>
         <tr>
           <th>支払い方法</th>
@@ -58,24 +58,37 @@
             <td><%= order_detail.amount %></td>
             <td><%= (order_detail.item.taxin_price * order_detail.amount).floor.to_s(:delimited) %></td>
             <td>
-              <%= form_with model: order_detail , url: admin_order_detail_path, method: :patch , local: true do |f| %>
+              <%= form_with model: order_detail , url: admin_order_detail_path(order_detail.id), method: :patch , local: true do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
                 <%= f.submit "更新", class: "btn btn-success" %>
               <% end %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
-    <div class='col-4'>
-      <ul>
-        <% @sum = 0 %>
-        <% @sum += order_detail.item.taxin_price * order_detail.amount %>
-        <li>商品合計  <%= @sum.floor.to_s(:delimited) %>円</li>
-        <li>送料  800円</li>
-        <li>請求金額合計  <%= (@sum + 800).floor.to_s(:delimited) %>円</li>
-      </ul>
-      <% end %>
+    <div class="col-xs-4">
+    </br>
+    </br>
+    </br>
+    <div>
+      <p>
+        <strong class="col-xs-3">商品合計</strong>
+         ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>
+      </p>
+    </div>
+    <div>
+      <p>
+        <strong class="col-xs-2">送料</strong>
+        ¥<%= @order.shipping_cost %>
+      </p>
+    </div>
+    <div>
+      <p>
+        <strong class="col-xs-4">請求金額合計</strong>
+        ¥<%= @order.total_payment.to_s(:delimited) %>
+      </p>
     </div>
   </div>
 </div>

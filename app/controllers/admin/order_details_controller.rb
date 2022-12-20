@@ -1,12 +1,11 @@
 class Admin::OrderDetailsController < ApplicationController
-  
-before_action :authenticate_admin!
-  
-  def update
-    @order = Order.find(params[:id])
-    @order_detail = OrderDetail.find(params[:id])
-    @order_details = @order.order_details.all
 
+before_action :authenticate_admin!
+
+  def update
+    @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
+    @order_details = OrderDetail.all
     is_updated = true
     if @order_detail.update(order_detail_params)
       @order.update(status: 2) if @order_detail.making_status == "manufacturing"
@@ -14,7 +13,7 @@ before_action :authenticate_admin!
       # ここから下の内容は③の内容になります。
       # 紐付いている注文商品の製作ステータスが "すべて" [製作完了]になった際に注文ステータスを「発送準備中」に更新させたいので、
       @order_details.each do |order_detail| #　紐付いている注文商品の製作ステータスを一つ一つeach文で確認していきます。
-        if order_detail.making_status != "finish" # 製作ステータスが「製作完了」ではない場合 
+        if order_detail.making_status != "finish" # 製作ステータスが「製作完了」ではない場合
           is_updated = false # 上記で定義してあるis_updatedを「false」に変更する。
         end
       end
@@ -29,5 +28,5 @@ before_action :authenticate_admin!
   def order_detail_params
     params.require(:order_detail).permit(:making_status)
   end
-  
+
 end
