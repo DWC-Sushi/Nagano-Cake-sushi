@@ -1,10 +1,10 @@
  <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-3 mt-5 '>
       <%= render 'admin/genres/genre_sidebar', genres: @genres  %>
     </div>
-    <div class='col-md-9'>
-      <h2 class="product-headline head-line title_h2 text-center">
+    <div class='col-md-9 my-5'>
+      <h2 class="product-headline head-line title_h2 text-left ">
         <% if @genre.present? %>
             <%= @genre.name %>
         <% else %>
@@ -17,7 +17,7 @@
 		  	<div class="row ">
       	<% @items.each do |item| %>
 
-			    	<div class="col-md-3 ">
+			    	<div class="col-md-3 mt-5">
                 <%= item.name %>
               <div class="img_field">
                 <%=link_to item_path(item) do %>
