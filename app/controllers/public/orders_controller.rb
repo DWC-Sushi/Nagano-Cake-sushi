@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  # before_action :authenticate_customer!
+   before_action :authenticate_customer!
   
   # 注文情報入力
   def new
