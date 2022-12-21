@@ -1,4 +1,10 @@
 class Admin::OrdersController < ApplicationController
+  def index
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders
+    @orders = @customer.orders.order(created_at: :desc).page(params[:page]).per(10)
+  end
+  
   def show
     @order_details = OrderDetail.where(order_id: params[:id])
     @order = Order.find(params[:id])
@@ -19,5 +25,5 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
-  
+
 end

@@ -40,6 +40,7 @@ namespace :admin do
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
+  get "orders/customers/:id" => "orders#index"
   resources :order_details, only:[:update]
   get "/search" => "items#search"
 
