@@ -26,9 +26,9 @@
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
               <li class="mt-12">
-                <%= form_with url: admin_search_path, method: :get, local: true, class: 'nav-link text-light' do |f| %>
-                  <%= f.collection_select :word_for_search, Genre.all, :id, :name %>
-                  <%= f.submit "検索" %>
+                <%= form_with url: admin_items_path, method: :get, local: true do |f| %>
+                  <%= f.text_field :content, placeholder: '🍰 search 🍰' %>
+                  <%= f.submit '🔎'%>
                 <% end %>
               </li>
 
@@ -53,9 +53,9 @@
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
               <li class="mt-12">
-                <%= form_with url: search_path, method: :get, local: true, class: 'nav-link text-light' do |f| %>
-                  <%= f.collection_select :word_for_search, Genre.all, :id, :name %>
-                  <%= f.submit "検索" %>
+                <%= form_with url: items_path, method: :get, local: true do |f| %>
+                  <%= f.text_field :content, placeholder: '🍰 search 🍰' %>
+                  <%= f.submit '🔎'%>
                 <% end %>
               </li>
             <% else %>
@@ -73,9 +73,9 @@
                 <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light' %>
               </li>
               <li class="mt-12">
-                <%= form_with url: search_path, method: :get, local: true, class: 'nav-link text-light' do |f| %>
-                  <%= f.collection_select :word_for_search, Genre.all, :id, :name %>
-                  <%= f.submit "検索" %>
+                <%= form_with url: items_path, method: :get, local: true do |f| %>
+                  <%= f.text_field :content, placeholder: '🍰 search 🍰' %>
+                  <%= f.submit '🔎'%>
                 <% end %>
               </li>
             <% end %>
