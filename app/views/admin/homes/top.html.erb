@@ -17,7 +17,7 @@
           <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= link_to  admin_order_path(order.id) do %>
+              <%= link_to  admin_order_path(order.id), class: "text-dark font-weight-bold" do %>
                 <%=  l order.created_at %>
               <% end %>
             </td>
@@ -28,7 +28,7 @@
           <% end %>
         </tbody>
     </table>
-    <div class="mx-auto" style="width:200px;">
+    <div class="mx-auto font-weight-bold" style="width:200px;">
       <%= paginate @orders %>
     </div>
     </div>

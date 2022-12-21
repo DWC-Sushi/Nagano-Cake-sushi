@@ -1,28 +1,31 @@
 <div class='container px-5 px-sm-0'>
 
-  <div class='row'>
-    <h4>注文履歴詳細</h4>
-    <table class='table'>
+  <div class='row px-3' style="margin-top:25px;">
+    <div class="col-sm-10 px-sm-0 offset-sm-1">
+      <h4>注文履歴詳細</h4>
+    </div>
+    <div class="col-7 px-sm-0 mb-5 offset-sm-1">
+    <table class='table table-borderless table-sm'>
       <tbody>
         <tr>
           <th>購入者</th>
-          <th><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer) %></th>
+          <td><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer) %></td>
         </tr>
         <tr>
           <th>注文日</th>
-          <th><%= l @order.created_at, format: :short %></th>
+          <td><%= l @order.created_at, format: :short %></td>
         </tr>
         <tr>
           <th>配送先</th>
-          <th>〒<%= @order.postal_code %>  <%= @order.address %></br><%= @order.name %></th>
+          <td>〒<%= @order.postal_code %>  <%= @order.address %></br><%= @order.name %></td>
         </tr>
         <tr>
           <th>支払い方法</th>
-          <th><%= @order.payment_method_i18n %></th>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th>注文ステータス</th>
-          <th>
+          <td>
           <% if @order.status == 1 %>
             <%= form.select :making_status == 1, class: "production_status-select" %>
           <% else %>
@@ -31,10 +34,11 @@
               <%= f.submit "更新" , class: 'btn btn-info' %>
             <% end %>
           <% end %>
-          </th>
+          </td>
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 
   <div class='row'>
