@@ -25,7 +25,6 @@ scope module: :public do
   get "/orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :show, :index]
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  get "/search" => "items#search"
 
 end
 
@@ -41,7 +40,6 @@ namespace :admin do
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   resources :order_details, only:[:update]
-  get "/search" => "items#search"
 
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
