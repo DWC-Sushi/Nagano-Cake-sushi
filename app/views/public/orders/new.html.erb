@@ -6,7 +6,7 @@
   <div class="">
     <div class="col-2 col-form-label font-weight-bold">支払方法</div>
     <div class="col-10 form-group">
-      <%= f.radio_button :payment_method,  %>
+      <%= f.radio_button :payment_method, 'credit_card' %>
       <%= f.label :payment_method, 'クレジットカード' %><br>
       <%= f.radio_button :payment_method, 'transfer' %>
       <%= f.label :payment_method, '銀行振込' %>
