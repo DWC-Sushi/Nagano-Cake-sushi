@@ -5,13 +5,13 @@
     </div>
 
     <div class="col-md-9">
-      <div class="top-box">
-        <p class="top-text">
+      <div class="top-box text-center m-5">
+        <strong class="">
           ようこそ、ながのCakeへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。<br>
-        </p>
+        </strong>
       </div>
 
       <div class="recommend-title">
@@ -20,7 +20,6 @@
       <div class="row">
         <% @random.each do |item| %>
           <div class="col-md-3">
-            <%= item.name  %>
             <div class="img_field">
             <%= link_to item_path(item) do %>
             <%= image_tag item.image, size:"180x130" %>
