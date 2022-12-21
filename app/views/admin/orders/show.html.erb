@@ -5,7 +5,7 @@
       <h4>注文履歴詳細</h4>
     </div>
     <div class="col-7 px-sm-0 mb-5 offset-sm-1">
-    <table class='table table-borderless table-sm'>
+    <table class='table table-borderbottom table-sm'>
       <tbody>
         <tr>
           <th>購入者</th>
@@ -42,9 +42,9 @@
   </div>
 
   <div class='row'>
-    <div class='col-8'>
+    <div class='col-8 px-sm-0'>
       <table class='table'>
-        <thead>
+        <thead class="table-active">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -72,27 +72,25 @@
         </tbody>
       </table>
     </div>
-    <div class="col-xs-4">
-    </br>
-    </br>
-    </br>
-    <div>
-      <p>
-        <strong class="col-xs-3">商品合計</strong>
-         ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>
-      </p>
-    </div>
-    <div>
-      <p>
-        <strong class="col-xs-2">送料</strong>
-        ¥<%= @order.shipping_cost %>
-      </p>
-    </div>
-    <div>
-      <p>
-        <strong class="col-xs-4">請求金額合計</strong>
-        ¥<%= @order.total_payment.to_s(:delimited) %>
-      </p>
+    <div class="col-3 pl-2 px-sm-0">
+      </br></br></br></br>
+      <table class='table table-borderless text-right'>
+        <tbody>
+          <tr>
+            <th>商品合計</th>
+            <td> ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%></td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td>¥<%= @order.shipping_cost %></td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td>¥<%= @order.total_payment.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+
 </div>
