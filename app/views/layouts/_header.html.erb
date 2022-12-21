@@ -35,10 +35,10 @@
             <!--customersログイン時のヘッダー-->
             <% elsif customer_signed_in? %>
               <li class= "nav-link text-light">
-                ようこそ！ <%= link_to customers_path do %>
-                <strong><%= current_customer.last_name %><%= current_customer.first_name %></strong>
+                ようこそ！ <%= link_to customers_path, class: "text-white font-weight-bold" do %>
+                <%= current_customer.last_name %><%= current_customer.first_name %>
                 <% end %>
-                 さん
+                さん
               </li>
               <li>
                 <%= link_to "マイページ", customers_path, class: 'nav-link text-light' %>
