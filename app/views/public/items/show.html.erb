@@ -14,11 +14,11 @@
         <div class="opnion">
           <h3><%= @item.introduction %></h3>
         </div>
-        <div class="position-absolute" style="bottom:0">
-          <h3>¥ <%= (@item.price*1.1).floor.to_s(:delimited) %>
+        
+           <h3 class="mt-5">¥ <%= (@item.price*1.1).floor.to_s(:delimited) %>
               <span class="tax">(税込)</span>
           </h3>
-        </div>
+        
       </div>
       </div>
 
