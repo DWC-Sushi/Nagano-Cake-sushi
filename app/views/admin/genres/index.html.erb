@@ -1,15 +1,15 @@
 <!-- ジャンル一覧・追加ページ WF6ページ目 -->
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h3 class="genre-head">ジャンル一覧・追加</h3>
+<div class="container px-5 px-sm-0">
+  <div class="row" style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4 class="genre-head">ジャンル一覧・追加</h4>
       <%= render 'genre_errors', genre: @genre %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <table class="table table-borderless">
         <tr>
@@ -24,13 +24,13 @@
     </div>
   </div>
 
-　<div class="row">
-　  <div class="col">
+　<div class="row px-5">
+　  <div class="col-md-3">
 　    <table class='table'>
-　      <thead class="thead-light">
+　      <thead class="thead-light text-center">
 　        <tr>
             <th>ジャンル</th>
-            <th colspan="1"></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
