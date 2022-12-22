@@ -1,15 +1,17 @@
 <!-- 商品詳細ページ WF4ページ目 -->
 
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top:25px;">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h4>商品詳細</h4>
     </div>
   </div>
   <div class="row">
-   <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-     <%= image_tag @item.get_image, size:"200x200"%>
-     <table class="table table-borderless">
+     <div class="col-sm-6 text-right mx-auto mb-5">
+       <%= image_tag @item.get_image, size:"300x300"%>
+     </div>
+     <div class="col-sm-6 mx-auto">
+     <table class="table table-borderless text-secondary d-flex text-align">
        <tr>
          <th>商品名</th>
          <td><%= @item.name %></td>
@@ -36,6 +38,7 @@
          </td>
        </tr>
      </table>
+     </div>
    </div>
   </div>
   <div class="row">
