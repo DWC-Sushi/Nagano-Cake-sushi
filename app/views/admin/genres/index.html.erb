@@ -1,0 +1,42 @@
+<!-- ジャンル一覧・追加ページ WF6ページ目 -->
+
+<div class="container px-5 px-sm-0">
+  <div class="row" style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4 class="genre-head">ジャンル一覧・追加</h4>
+      <%= render 'genre_errors', genre: @genre %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <div class="form-group">
+            <th><%= f.label :ジャンル名 %></th>
+            <th><%= f.text_field :name, placeholder:"ジャンル名" %></th>
+            <th><%= f.submit "新規登録", class: "btn btn-success" %></th>
+          </div>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+　<div class="row px-5">
+　  <div class="col-md-3">
+　    <table class='table'>
+　      <thead class="thead-light text-center">
+　        <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render 'genre_index', genres: @genres %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

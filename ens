@@ -1,0 +1,71 @@
+[33m856e2c4[m[33m ([m[1;36mHEAD -> [m[1;32ma/customers[m[33m)[m HEAD@{0}: merge origin/develop: Merge made by the 'ort' strategy.
+[33m9aeaad1[m HEAD@{1}: checkout: moving from develop to a/customers
+[33m2c20cb6[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{2}: pull origin develop: Fast-forward
+[33m5eaeb96[m HEAD@{3}: checkout: moving from a/customers to develop
+[33m9aeaad1[m HEAD@{4}: commit: 4
+[33m0e404a9[m HEAD@{5}: merge origin/develop: Merge made by the 'ort' strategy.
+[33m2bf3f51[m HEAD@{6}: checkout: moving from develop to a/customers
+[33m5eaeb96[m HEAD@{7}: pull origin develop: Fast-forward
+[33m7c4a81e[m HEAD@{8}: checkout: moving from a/customers to develop
+[33m2bf3f51[m HEAD@{9}: commit: 3
+[33mf297a99[m HEAD@{10}: commit: view修正
+[33m35f27f0[m HEAD@{11}: checkout: moving from develop to a/customers
+[33m7c4a81e[m HEAD@{12}: checkout: moving from a/customers to develop
+[33m35f27f0[m HEAD@{13}: commit (merge): merge
+[33mfbd3964[m HEAD@{14}: checkout: moving from develop to a/customers
+[33m7c4a81e[m HEAD@{15}: pull origin develop: Fast-forward
+[33mdef98e1[m HEAD@{16}: checkout: moving from a/customers to develop
+[33mfbd3964[m HEAD@{17}: commit: order.show
+[33m03ab80f[m HEAD@{18}: commit: View編集
+[33mdef98e1[m HEAD@{19}: checkout: moving from develop to a/customers
+[33mdef98e1[m HEAD@{20}: checkout: moving from login to develop
+[33m8e2b532[m[33m ([m[1;32mlogin[m[33m)[m HEAD@{21}: checkout: moving from develop to login
+[33mdef98e1[m HEAD@{22}: pull origin develop: Fast-forward
+[33m7fe85f6[m HEAD@{23}: checkout: moving from login to develop
+[33m8e2b532[m[33m ([m[1;32mlogin[m[33m)[m HEAD@{24}: commit: 2
+[33mdef98e1[m HEAD@{25}: pull origin develop: Fast-forward
+[33m708205f[m[33m ([m[1;31morigin/login[m[33m)[m HEAD@{26}: commit: 調整
+[33mf4b4608[m HEAD@{27}: checkout: moving from develop to login
+[33m7fe85f6[m HEAD@{28}: pull origin develop: Fast-forward
+[33mbacb514[m HEAD@{29}: checkout: moving from login to develop
+[33mf4b4608[m HEAD@{30}: commit: Header,Login,Customers
+[33me861ba3[m HEAD@{31}: checkout: moving from develop to login
+[33mbacb514[m HEAD@{32}: checkout: moving from login to develop
+[33me861ba3[m HEAD@{33}: checkout: moving from develop to login
+[33mbacb514[m HEAD@{34}: pull origin develop: Fast-forward
+[33me861ba3[m HEAD@{35}: checkout: moving from login to develop
+[33me861ba3[m HEAD@{36}: checkout: moving from develop to login
+[33me861ba3[m HEAD@{37}: pull origin develop: Fast-forward
+[33m851ae98[m HEAD@{38}: checkout: moving from admin/controllers to develop
+[33m1cfd040[m[33m ([m[1;31morigin/admin/controllers[m[33m, [m[1;32madmin/controllers[m[33m)[m HEAD@{39}: checkout: moving from develop to admin/controllers
+[33m851ae98[m HEAD@{40}: pull origin develop: Fast-forward
+[33m826bbb9[m HEAD@{41}: checkout: moving from admin/controllers to develop
+[33m1cfd040[m[33m ([m[1;31morigin/admin/controllers[m[33m, [m[1;32madmin/controllers[m[33m)[m HEAD@{42}: commit: 3
+[33m388e489[m HEAD@{43}: commit: routes
+[33m8911429[m HEAD@{44}: checkout: moving from develop to admin/controllers
+[33m826bbb9[m HEAD@{45}: reset: moving to HEAD
+[33m826bbb9[m HEAD@{46}: pull origin develop: Fast-forward
+[33mc5c52d9[m HEAD@{47}: checkout: moving from admin/controllers to develop
+[33m8911429[m HEAD@{48}: commit: 2
+[33mc5c52d9[m HEAD@{49}: checkout: moving from develop to admin/controllers
+[33mc5c52d9[m HEAD@{50}: checkout: moving from develop to develop
+[33mc5c52d9[m HEAD@{51}: pull origin develop: Fast-forward
+[33md663911[m HEAD@{52}: checkout: moving from admin/controllers to develop
+[33mc5c52d9[m HEAD@{53}: pull origin develop: Fast-forward
+[33me0f0976[m HEAD@{54}: commit: admin/controllers2
+[33mc1385f2[m HEAD@{55}: commit: admin/controllers
+[33md663911[m HEAD@{56}: checkout: moving from develop to admin/controllers
+[33md663911[m HEAD@{57}: pull origin develop: Fast-forward
+[33m7815bdb[m HEAD@{58}: checkout: moving from bootstrap to develop
+[33me2c65b3[m[33m ([m[1;31morigin/bootstrap[m[33m, [m[1;32mbootstrap[m[33m)[m HEAD@{59}: commit: Add Bootstrap
+[33m7815bdb[m HEAD@{60}: checkout: moving from develop to bootstrap
+[33m7815bdb[m HEAD@{61}: pull origin develop: Fast-forward
+[33m71d04b4[m HEAD@{62}: checkout: moving from controller to develop
+[33m1d9c3e7[m[33m ([m[1;31morigin/controller[m[33m, [m[1;32mcontroller[m[33m)[m HEAD@{63}: commit: Add controllers
+[33m71d04b4[m HEAD@{64}: checkout: moving from develop to controller
+[33m71d04b4[m HEAD@{65}: pull origin develop: Fast-forward
+[33mec4fee4[m HEAD@{66}: pull origin develop: Fast-forward
+[33m005f91e[m HEAD@{67}: checkout: moving from develop to develop
+[33m005f91e[m HEAD@{68}: pull origin develop: Fast-forward
+[33md9bef71[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{69}: checkout: moving from main to develop
+[33md9bef71[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{70}: clone: from github.com:DWC-Sushi/Nagano-Cake-sushi.git

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <%= render 'admin/genres/genre_sidebar', genres: @genres  %>
+    </div>
+
+    <div class="col-md-9">
+      <%= image_tag "top_image4.jpeg", style: "width: 700px; height: 400px;" %>
+      <div class="top-box text-left" style="position:absolute; top:140px; left:18px; color:#fff; background-color:rgba(0,0,0,0.2); font-size:23px;">
+        <strong class="">
+          ようこそ、ながのCakeへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。　　　　　　　<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。<br>
+        </strong>
+      </div>
+      </br></br>
+      <div class="recommend-title">
+        <h3>おすすめ商品</h3>
+      </div>
+      <div class="row">
+        <% @random.each do |item| %>
+          <div class="col-md-3">
+            <div class="img_field">
+            <%= link_to item_path(item) do %>
+            <%= image_tag item.image, size:"180x130" %>
+            <% end %>
+            </div>
+            <p><%= item.name %></p>
+            <p>¥<%= (item.price*1.1).floor.to_s(:delimited)%>(税込)</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="recommend-more"><%= link_to "全ての商品を見る>", items_path %></div>
+    </div>
+  </div>
+</div>
